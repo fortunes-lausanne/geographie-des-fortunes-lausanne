@@ -244,3 +244,5 @@ body,button,select,input{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif
 .mentions{max-width:none;}
 /* version publique : aucun outil de correction */
 body.public #editPanel,body.public #calibPanel,body.public #mapCoords{display:none!important;}
+.edit-actions{flex-wrap:wrap;}
+.edit-actions button:first-child{flex:1 1 100%;padding:9px 8px;}

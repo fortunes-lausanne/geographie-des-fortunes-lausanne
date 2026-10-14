@@ -186,7 +186,7 @@ function setYear(idx){
   document.getElementById('tlYr').textContent=yr;
   document.getElementById('tlPlan').textContent=plan;
   document.getElementById('mapBadge').textContent=plan;
-  mapImg.src='images/'+fond+'.jpg';
+  mapImg.src=(window.IMG_BASE||'')+'images/'+fond+'.jpg';
   mapImg.style.width=dims[0]+'px';
   mapSvg.setAttribute('viewBox',`0 0 ${dims[0]} ${dims[1]}`);
   mapSvg.style.width=dims[0]+'px';mapSvg.style.height=dims[1]+'px';
@@ -240,6 +240,10 @@ mapOuter.addEventListener('mousedown',e=>{mD=true;mSX=e.clientX;mSY=e.clientY;mS
 window.addEventListener('mousemove',e=>{if(!mD)return;mPX=mSPX+(e.clientX-mSX);mPY=mSPY+(e.clientY-mSY);applyMT();});
 window.addEventListener('mouseup',()=>{mD=false;mapOuter.classList.remove('grabbing');});
 
+function exportDataJs(){
+  const head="// Donnees de la carte (genere par build28.py) : positions, fortunes, transformations des fonds.\n";
+  downloadText('data.js',head+'const CONFIG = '+JSON.stringify(CONFIG)+';\n','text/javascript;charset=utf-8;');
+}
 function fmtF(n){return new Intl.NumberFormat('fr-CH').format(n)+' CHF';}
 function showPopup(d,e){
   document.getElementById('pNom').textContent=d.nom;

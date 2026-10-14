@@ -82,6 +82,7 @@
       <div class="edit-hint">Clique-glisse un point pour le repositionner. Chaque correction est <b>sauvegardée automatiquement dans ce navigateur</b> (elle survit au rechargement). Pour l'inscrire <b>dans le fichier HTML lui-même</b>, utilise « Enregistrer dans le HTML ».</div>
       <div id="editList"><div class="edit-empty">Aucune correction pour l'instant</div></div>
       <div class="edit-actions">
+        <button onclick="exportDataJs()" title="Fabrique le fichier data.js a jour (toutes les corrections incluses). A deposer sur GitHub pour mettre le site public a jour." style="background:#438ac6;color:#fff;border-color:#438ac6;">Exporter data.js (mise à jour du site)</button>
         <button onclick="saveToHtml()" title="Écrit les corrections dans le fichier HTML (Chrome/Edge : écriture directe ; autres navigateurs : téléchargement d'une copie à jour)">Enregistrer dans le HTML</button>
         <button onclick="exportCorrections()">Exporter CSV</button>
         <button onclick="clearCorrections()">Tout effacer</button>
