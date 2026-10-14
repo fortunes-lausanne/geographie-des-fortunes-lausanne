@@ -242,3 +242,5 @@ body{background:var(--bg);color:var(--text);}
 body,button,select,input{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
 #mapCoords{background:rgba(255,255,255,0.92)!important;color:var(--text2)!important;border:1px solid var(--border)!important;}
 .mentions{max-width:none;}
+/* version publique : aucun outil de correction */
+body.public #editPanel,body.public #calibPanel,body.public #mapCoords{display:none!important;}

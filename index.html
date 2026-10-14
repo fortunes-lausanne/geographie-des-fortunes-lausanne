@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fortunes lausannoises 1867–1955 – carte interactive</title>
+<title>Géographie des fortunes lausannoises, 1867–1955</title>
 <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+<body class="public">
 
 <div class="main">
 
@@ -15,8 +15,8 @@
 <section id="carte" style="padding:0;" class="map-section">
   <div class="map-header">
     <div class="mh-l">
-      <h2>Carte interactive — où vivent les contribuables aisés ?</h2>
-      <p>Chaque cercle = un contribuable · Taille proportionnelle à la fortune (√fortune) · Fond : plans historiques contemporains du registre</p>
+      <h2>Géographie des fortunes lausannoises, 1867–1955</h2>
+      <p>Carte interactive des contribuables aisés de Lausanne · Chaque cercle = un contribuable · Taille proportionnelle à la fortune (√fortune) · Fond : plans historiques contemporains du registre</p>
     </div>
     <div class="mh-stats">
       <div class="mhstat"><div class="v" id="hCount">—</div><div class="l">Contribuables</div></div>
@@ -64,25 +64,6 @@
           <option value="1945">Siegfried 1945</option>
         </optgroup>
       </select>
-    </div>
-    <div>
-      <div class="mc-label" style="margin-bottom:4px">Correction manuelle</div>
-      <div class="cbtn-row">
-        <button class="cbtn" id="editModeBtn" onclick="toggleEditMode(this)">Mode correction</button>
-      </div>
-    </div>
-    <div>
-      <div class="mc-label" style="margin-bottom:4px">Données (MN95)</div>
-      <div class="cbtn-row">
-        <button class="cbtn" id="exportAllBtn" onclick="exportAllPoints()" title="Tous les points de toutes les années, avec coordonnées MN95 (E, N)">Exporter tous les points (CSV)</button>
-        <button class="cbtn" id="importBtn" onclick="importPointsCSV()" title="Réimporter un CSV modifié (colonnes id_obs, E_MN95, N_MN95)">Importer un CSV</button>
-      </div>
-    </div>
-    <div>
-      <div class="mc-label" style="margin-bottom:4px">Recalage des fonds</div>
-      <div class="cbtn-row">
-        <button class="cbtn" id="calibModeBtn" onclick="toggleCalibMode(this)">Mode calibration</button>
-      </div>
     </div>
     <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
       <span class="mc-label">Opacité</span>
@@ -143,7 +124,7 @@
     </div>
   </div>
 </section>
-<div class="mentions"><b>Sources et mentions.</b> Les informations affichées (noms, fortunes, professions, adresses) sont tirées de registres d'impôts historiques conservés aux Archives cantonales vaudoises (ACV, cotes K X a 144 à 146), accessibles à toute personne qui les consulte. Elles sont reproduites telles qu'elles figurent dans ces sources, à des fins exclusivement scientifiques et non commerciales. Les positions sont des reconstitutions cartographiques établies à partir d'adresses historiques : elles sont approximatives, ne désignent pas nécessairement le lieu exact de résidence, et des erreurs de transcription ou de localisation restent possibles. Les montants sont ceux consignés dans ces registres. Projet de recherche de l'Université de Lausanne (« Les beaux quartiers »). Toute demande de correction ou de retrait peut être adressée à l'équipe du projet. <a href="donnees.html">Politique de gestion des données</a></div>
+<div class="mentions"><b>Sources et mentions.</b> Les informations affichées (noms, fortunes, professions, adresses) sont tirées de registres d'impôts historiques conservés aux Archives cantonales vaudoises (ACV, cotes K X a 144 à 146), accessibles à toute personne qui les consulte. Elles sont reproduites telles qu'elles figurent dans ces sources, à des fins exclusivement scientifiques et non commerciales. Les positions sont des reconstitutions cartographiques établies à partir d'adresses historiques : elles sont approximatives, ne désignent pas nécessairement le lieu exact de résidence, et des erreurs de transcription ou de localisation restent possibles. Les montants sont ceux consignés dans ces registres. Projet de recherche de l'Université de Lausanne (« Les beaux quartiers »). Toute demande de correction ou de retrait peut être adressée à l'équipe du projet : <a href="mailto:lausannebeauxquartiers@gmail.com">lausannebeauxquartiers@gmail.com</a>. <a href="donnees.html">Politique de gestion des données</a></div>
 
 </div><!-- .main -->
 
@@ -161,6 +142,7 @@
 </div>
 
 <script id="saved-corrections" type="application/json">[]</script>
+<script>window.PUBLIC_VIEW=true;</script>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 

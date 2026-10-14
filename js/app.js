@@ -240,6 +240,26 @@ mapOuter.addEventListener('mousedown',e=>{mD=true;mSX=e.clientX;mSY=e.clientY;mS
 window.addEventListener('mousemove',e=>{if(!mD)return;mPX=mSPX+(e.clientX-mSX);mPY=mSPY+(e.clientY-mSY);applyMT();});
 window.addEventListener('mouseup',()=>{mD=false;mapOuter.classList.remove('grabbing');});
 
+function fmtF(n){return new Intl.NumberFormat('fr-CH').format(n)+' CHF';}
+function showPopup(d,e){
+  document.getElementById('pNom').textContent=d.nom;
+  document.getElementById('pFortune').textContent=fmtF(d.fortune);
+  document.getElementById('pAnnee').textContent='Registre '+CONFIG.YEARS[curYrIdx];
+  document.getElementById('pProf').textContent=d.prof||'—';
+  document.getElementById('pAdrH').textContent=d.adr_hist||'—';
+  document.getElementById('pAdrM').textContent=d.adr_mod||'—';
+  const u=document.getElementById('pUrl');
+  if(d.url){u.href=d.url;u.style.display='';}else{u.removeAttribute('href');u.style.display='none';}
+  document.getElementById('pCoord').textContent=fmtMN95Pt(d);
+  const p=document.getElementById('popup');p.classList.add('vis');
+  let x=e.clientX+16,y=e.clientY-10;
+  if(x+320>window.innerWidth)x=e.clientX-330;
+  if(y+260>window.innerHeight)y=e.clientY-270;
+  p.style.left=x+'px';p.style.top=y+'px';
+}
+function closePopup(){document.getElementById('popup').classList.remove('vis');}
+document.addEventListener('click',closePopup);
+
 // ── MODE CORRECTION (glisser-déposer un point pour le recaler) ──
 function toggleEditMode(btn){
   editMode=!editMode;
@@ -535,6 +555,6 @@ async function saveToHtml(){
 }
 
 // INIT
-loadStoredCorrections();
+if(!window.PUBLIC_VIEW)loadStoredCorrections();
 updateEditPanel();
 setYear(0);
