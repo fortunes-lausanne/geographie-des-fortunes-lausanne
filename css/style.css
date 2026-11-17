@@ -246,3 +246,10 @@ body,button,select,input{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif
 body.public #editPanel,body.public #calibPanel,body.public #mapCoords{display:none!important;}
 .edit-actions{flex-wrap:wrap;}
 .edit-actions button:first-child{flex:1 1 100%;padding:9px 8px;}
+
+/* --- Retours du 17 nov. 2026 : équipe, indication de zoom, plein écran --- */
+.credits{font-size:0.7rem;line-height:1.5;color:var(--text2);padding:12px 28px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f5f7fa;border-top:1px solid var(--border);}
+.credits b{color:var(--text);font-weight:600;}
+.credits + .mentions{border-top:none;padding-top:4px;}
+.zoom-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(20,20,20,0.82);color:#fff;font:0.74rem 'Helvetica Neue',Helvetica,Arial,sans-serif;padding:7px 14px;border-radius:3px;pointer-events:none;opacity:0;transition:opacity .25s;z-index:11;white-space:nowrap;}
+.zoom-hint.show{opacity:1;}

@@ -71,7 +71,7 @@
       <span style="font-size:0.7rem;color:var(--text2);" id="op_val">72%</span>
     </div>
   </div>
-  <p class="map-hint" id="mapHint">Molette = zoom · Cliquer-glisser = naviguer · Clic sur un point = fiche détaillée · ▲ = top 10 fortunes de l'année · Fond de carte : un choix manuel recalcule les positions par transformation géographique</p>
+  <p class="map-hint" id="mapHint">Ctrl (ou ⌘) + molette = zoom · Cliquer-glisser = naviguer · Clic sur un point = fiche détaillée · ▲ = top 10 fortunes de l'année · Fond de carte : un choix manuel recalcule les positions par transformation géographique</p>
   <div class="map-outer" id="mapOuter">
     <div class="map-inner" id="mapInner">
       <img id="mapImg" src="" alt="Plan historique de Lausanne"/>
@@ -118,14 +118,17 @@
     </div>
     <div class="scale-bar" id="scaleBar"><div class="sb-line" id="sbLine"></div><div class="sb-label" id="sbLabel">—</div></div>
     <div class="north-arrow" id="northArrow"><svg width="30" height="30" viewBox="0 0 30 30"><g id="naGroup"><polygon points="15,4 19.5,23 15,18.5 10.5,23" fill="#d4b896" stroke="#0a0a0a" stroke-width="0.6"/><text x="15" y="13" font-size="7" fill="#0a0a0a" text-anchor="middle" font-family="Georgia">N</text></g></svg></div>
+    <div class="zoom-hint" id="zoomHint">Ctrl (ou ⌘) + molette pour zoomer</div>
     <div class="zc">
       <button class="zb" onclick="mapZoom(1.35)">+</button>
       <button class="zb sm" onclick="mapReset()">↺</button>
       <button class="zb" onclick="mapZoom(0.74)">−</button>
+      <button class="zb sm" onclick="toggleFullscreen()" title="Plein écran" aria-label="Plein écran">⛶</button>
     </div>
   </div>
 </section>
-<div class="mentions"><b>Sources et mentions.</b> Les informations affichées (noms, fortunes, professions, adresses) sont tirées de registres d'impôts historiques conservés aux Archives cantonales vaudoises (ACV, cotes K X a 144 à 146), accessibles à toute personne qui les consulte. Elles sont reproduites telles qu'elles figurent dans ces sources, à des fins exclusivement scientifiques et non commerciales. Les positions sont des reconstitutions cartographiques établies à partir d'adresses historiques : elles sont approximatives, ne désignent pas nécessairement le lieu exact de résidence, et des erreurs de transcription ou de localisation restent possibles. Les montants sont ceux consignés dans ces registres. Projet de recherche de l'Université de Lausanne (« Les beaux quartiers »). Toute demande de correction ou de retrait peut être adressée à l'équipe du projet : <a href="mailto:lausannebeauxquartiers@gmail.com">lausannebeauxquartiers@gmail.com</a>. <a href="donnees.html">Politique de gestion des données</a></div>
+<div class="credits"><b>Équipe.</b> Projet dirigé par Thibaud Giddey et Gilles Prod’hom (Faculté des lettres, UNIL) ; cartes et site créés par Rémi Lüthi, avec la collaboration de Julien Briant (Service du cadastre de la Ville de Lausanne).</div>
+<div class="mentions"><b>Sources et mentions.</b> Les informations affichées (noms, fortunes, professions, adresses) sont tirées de registres fiscaux historiques conservés aux Archives cantonales vaudoises (ACV, cotes K X a 144 à 146, rôles des contribuables du district de Lausanne), librement accessibles et consultables. Elles sont reproduites telles qu'elles figurent dans ces sources, à des fins exclusivement scientifiques et non commerciales. Les positions sont des reconstitutions cartographiques établies à partir d'adresses historiques : elles sont approximatives, ne désignent pas nécessairement le lieu exact de résidence, et des erreurs de transcription ou de localisation restent possibles. Les montants sont ceux consignés dans ces registres, en francs suisses de l’époque. Projet de recherche de l'Université de Lausanne (« Les beaux quartiers »). Toute demande de correction ou de retrait peut être adressée à l'équipe du projet : Thibaud Giddey et Gilles Prod’hom (Faculté des lettres), <a href="mailto:lausannebeauxquartiers@gmail.com">lausannebeauxquartiers@gmail.com</a>. <a href="donnees.html">Politique de gestion des données</a></div>
 
 </div><!-- .main -->
 

@@ -214,6 +214,15 @@ function setColorMode(mode,btn){
 function updateOpacity(v){opacity=v/100;document.getElementById('op_val').textContent=v+'%';const pts=CONFIG.PTS[String(CONFIG.YEARS[curYrIdx])]||[];renderCircles(pts);}
 
 function applyMT(){mapInner.style.transform=`translate(${mPX}px,${mPY}px) scale(${mS})`;updateScaleBar();updateMarkerSizes();}
+// Zoom a la molette : seulement avec Ctrl (ou Cmd) ; sinon la page defile normalement.
+let _zhTimer=null;
+function showZoomHint(){const h=document.getElementById('zoomHint');if(!h)return;h.classList.add('show');clearTimeout(_zhTimer);_zhTimer=setTimeout(()=>h.classList.remove('show'),1400);}
+function toggleFullscreen(){
+  const d=document,el=d.documentElement;
+  const on=d.fullscreenElement||d.webkitFullscreenElement;
+  if(on){(d.exitFullscreen||d.webkitExitFullscreen).call(d);}
+  else{(el.requestFullscreen||el.webkitRequestFullscreen).call(el);}
+}
 function mapZoom(f){const r=mapOuter.getBoundingClientRect(),cx=r.width/2,cy=r.height/2,ns=Math.min(Math.max(mS*f,0.2),16);mPX=cx-(cx-mPX)*(ns/mS);mPY=cy-(cy-mPY)*(ns/mS);mS=ns;applyMT();}
 function mapReset(){
   const r=mapOuter.getBoundingClientRect();
@@ -235,7 +244,7 @@ function updateNorthArrow(){
   const g=document.getElementById('naGroup');
   if(g)g.setAttribute('transform',`rotate(${geo.bearing} 15 15)`);
 }
-mapOuter.addEventListener('wheel',e=>{e.preventDefault();const r=mapOuter.getBoundingClientRect(),f=e.deltaY<0?1.15:0.87,ns=Math.min(Math.max(mS*f,0.2),16);mPX=(e.clientX-r.left)-((e.clientX-r.left)-mPX)*(ns/mS);mPY=(e.clientY-r.top)-((e.clientY-r.top)-mPY)*(ns/mS);mS=ns;applyMT();},{passive:false});
+mapOuter.addEventListener('wheel',e=>{if(!(e.ctrlKey||e.metaKey)){showZoomHint();return;}e.preventDefault();const r=mapOuter.getBoundingClientRect(),f=e.deltaY<0?1.15:0.87,ns=Math.min(Math.max(mS*f,0.2),16);mPX=(e.clientX-r.left)-((e.clientX-r.left)-mPX)*(ns/mS);mPY=(e.clientY-r.top)-((e.clientY-r.top)-mPY)*(ns/mS);mS=ns;applyMT();},{passive:false});
 mapOuter.addEventListener('mousedown',e=>{mD=true;mSX=e.clientX;mSY=e.clientY;mSPX=mPX;mSPY=mPY;mDownX=e.clientX;mDownY=e.clientY;mapOuter.classList.add('grabbing');});
 window.addEventListener('mousemove',e=>{if(!mD)return;mPX=mSPX+(e.clientX-mSX);mPY=mSPY+(e.clientY-mSY);applyMT();});
 window.addEventListener('mouseup',()=>{mD=false;mapOuter.classList.remove('grabbing');});
@@ -561,4 +570,7 @@ async function saveToHtml(){
 // INIT
 if(!window.PUBLIC_VIEW)loadStoredCorrections();
 updateEditPanel();
-setYear(0);
+// Affichage par defaut : 1923, avec le fond Siegfried (retour de T. Giddey, nov. 2026)
+fondOverride='siegfried-auto';
+const _fs=document.getElementById('fondSelect');if(_fs)_fs.value='siegfried-auto';
+setYear(Math.max(0,CONFIG.YEARS.indexOf(1923)));
